@@ -1,17 +1,91 @@
-# intrntchld2.0
 <!DOCTYPE html>
 <html lang="en">
 <head>
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
   <style>
-    /* CSS code here */
     body {
       margin: 0;
       font-family: 'Arial', sans-serif;
     }
 
-    /* ... (rest of the CSS code) ... */
+    .desktop {
+      background: #008080;
+      height: 100vh;
+      display: flex;
+      flex-direction: column;
+      padding: 10px;
+    }
+
+    .icon {
+      background: #C0C0C0;
+      padding: 5px;
+      margin: 5px;
+      cursor: pointer;
+    }
+
+    #musicPlayer {
+      position: absolute;
+      top: 50%;
+      left: 50%;
+      transform: translate(-50%, -50%);
+      width: 400px;
+      background: #FFFFFF;
+      border: 2px solid #000000;
+      border-radius: 5px;
+      box-shadow: 0 0 10px rgba(0, 0, 0, 0.5);
+    }
+
+    .title-bar {
+      background: #008080;
+      padding: 5px;
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+    }
+
+    .title-bar-controls button {
+      width: 16px;
+      height: 16px;
+      margin-left: 5px;
+      border: none;
+      background: none;
+      cursor: pointer;
+    }
+
+    .content {
+      padding: 20px;
+    }
+
+    .hidden {
+      display: none;
+    }
+
+    #playlist {
+      margin-top: 10px;
+    }
+
+    .moving-icon {
+      width: 20px;
+      height: 20px;
+      background: red;
+      position: absolute;
+      top: 0;
+      left: 0;
+      animation: moveIcon 2s linear infinite;
+    }
+
+    @keyframes moveIcon {
+      0% {
+        transform: translateX(0);
+      }
+      50% {
+        transform: translateX(200px);
+      }
+      100% {
+        transform: translateX(0);
+      }
+    }
   </style>
   <title>Windows 98 Music Player</title>
 </head>
@@ -41,12 +115,48 @@
   </div>
 
   <script>
-    // JavaScript code here
     function showError(icon) {
       alert(`Error: ${icon} is not accessible. This is a simulation.`);
     }
 
-    // ... (rest of the JavaScript code) ...
+    function playMusic() {
+      const radioPage = document.getElementById('radioPage');
+      const movingIcon = document.createElement('div');
+      movingIcon.classList.add('moving-icon');
+      radioPage.appendChild(movingIcon);
+      // Placeholder for actual audio playback logic
+    }
+
+    function handleFileSelect() {
+      const fileInput = document.getElementById('fileInput');
+      const playlist = document.getElementById('playlist');
+
+      const files = fileInput.files;
+
+      for (const file of files) {
+        const listItem = document.createElement('div');
+        listItem.textContent = file.name;
+        playlist.appendChild(listItem);
+      }
+    }
+
+    function minimize() {
+      // Placeholder for minimize logic
+    }
+
+    function maximize() {
+      // Placeholder for maximize logic
+    }
+
+    function closePlayer() {
+      const movingIcon = document.querySelector('.moving-icon');
+      if (movingIcon) {
+        movingIcon.remove();
+        // Placeholder for actual audio stop logic
+      }
+      document.getElementById('musicPlayer').classList.add('hidden');
+      document.getElementById('desktop').classList.remove('hidden');
+    }
   </script>
 </body>
 </html>
